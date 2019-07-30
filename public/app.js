@@ -4,22 +4,24 @@ document.addEventListener("DOMContentLoaded", e => {
 
     const db = firebase.firestore();
 
-    fetch('https://us-central1-course-scraper.cloudfunctions.net/api/dog')
-        .then(console.log)
-        .catch(e => {
-            console.log("Fetch failed");
-            console.error(e);
-        });
+    // fetch('https://us-central1-course-scraper.cloudfunctions.net/api/dog')
+    //     .then(console.log)
+    //     .catch(e => {
+    //         console.log("Fetch failed");
+    //         console.error(e);
+    //     });
 
 
-    const testEndpoint = firebase.functions().httpsCallable('api/dog');
-    testEndpoint("")
+    const testEndpoint = firebase.functions().httpsCallable('scraper');
+    testEndpoint({
+            "text": 'https://google.ca'
+        })
         .then(res => {
             console.log(res);
         })
         .catch(e => {
             console.log("https call failed");
-            console.error(e);
+            console.log(e);
         });
 
 });

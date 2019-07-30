@@ -1,1 +1,1 @@
-export { scraper, api } from './http';
+export { scraper} from './http';
